@@ -1,3 +1,4 @@
+@icon("res://assets/components/Component2DNode.svg")
 class_name Component2D
 extends Node2D
 
