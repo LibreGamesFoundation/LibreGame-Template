@@ -4,5 +4,13 @@
 
 Template for 2D and 3D Godot projects, built to be forked for bigger projects.
 
+
+## Features
+
+### Components
+|  Class Name   | Icon |  Description  | Extends From |
+| ------------- | :-------------: | -------------- | -------------- |
+| Component |![](assets/components/ComponentNode.svg)|Base class for all Components that exist outside of 2D or 3D space | Node |
+
 ## Contributions
 If you find any issues or bugs feel free to create an issue or a Pull Request.
