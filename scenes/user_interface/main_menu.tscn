@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://bp2w08fr4truy"]
+
+[ext_resource type="Theme" uid="uid://bqdt1tfgaool7" path="res://scenes/user_interface/main_menu.theme" id="1_netsw"]
+[ext_resource type="Script" uid="uid://c4gv32lif03uo" path="res://scenes/user_interface/main_menu.gd" id="1_xsm3n"]
+
+[node name="MainMenu" type="Control" unique_id=1188293773]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xsm3n")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=71115266]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 128
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1817958988]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=885395181]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=1563326309]
+layout_mode = 2
+theme = ExtResource("1_netsw")
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1760603173]
+layout_mode = 2
+theme = ExtResource("1_netsw")
+text = "LibreGame"
+horizontal_alignment = 1
+
+[node name="MenuLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1814846666]
+layout_mode = 2
+theme = ExtResource("1_netsw")
+theme_override_font_sizes/font_size = 48
+text = "Main Menu"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1214465037]
+layout_mode = 2
+theme = ExtResource("1_netsw")
+
+[node name="PlayButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1619179466]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_netsw")
+text = "Play"
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=628250931]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_netsw")
+text = "Settings"
+
+[node name="CreditsButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=112105109]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_netsw")
+text = "Credits"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1537566065]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_netsw")
+text = "Quit"
