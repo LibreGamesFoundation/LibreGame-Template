@@ -43,6 +43,11 @@ enum RegenType {
 ## regeneration resumes. Set to 0.0 to regenerate continuously.
 @export var regen_delay : float = 0.0
 
+@export_category("Source Collection")
+@export var collect_sources : bool = false
+
+var source_dictionary : Dictionary[String, float]
+
 var _time_since_last_decrease : float = 0.0
 var _is_regenerating : bool = false
 
