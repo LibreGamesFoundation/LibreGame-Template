@@ -20,6 +20,8 @@ Template for 2D and 3D Godot projects, built to be forked for bigger projects.
 
 ### Resources
 | Resource Name | Description  | Extends From |
+| ------------- | :-------------: | -------------- |
 | InventoryItem | Base resource describing a stackable inventory item | Resource |
+
 ## Contributions
 If you find any issues or bugs feel free to create an issue or a Pull Request.
