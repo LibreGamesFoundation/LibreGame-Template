@@ -1,5 +1,6 @@
 # LibreGame Template
 
+[![Discord](https://img.shields.io/badge/Discord-Join%20-5865F2?logo=discord&logoColor=white)]([https://godotengine.org/download/](https://discord.gg/d7GrUkCXZz))
 [![Godot](https://img.shields.io/badge/Godot-v4.7.2%20-478CBF?logo=godot-engine&logoColor=white)](https://godotengine.org/download/)
 [![MIT LICENSE](https://img.shields.io/badge/License-MIT%20-aa0000?logo=MIT&logoColor=white)](LICENSE)
 
