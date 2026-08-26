@@ -1,11 +1,10 @@
 @icon("res://assets/components/ResourceComponentNode.svg")
 class_name ResourceComponent
 extends ComponentBase
-## Experimental component for creating and managing any type of singular resource.
+## Component for creating and managing any type of singular resource.
 ##
 ## Examples include health, stamina, mana, etc.
 ##
-## @experimental
 
 signal current_resource_quantity_changed(old_quantity : float, new_quantity : float)
 signal max_resource_quantity_changed(old_quantity : float, new_quantity : float)
@@ -13,6 +12,11 @@ signal current_resource_quantity_at_max()
 signal current_resource_quantity_at_min()
 signal regeneration_started()
 signal regeneration_finished()
+
+enum RegenType {
+	LINEAR, ## Regenerates at a constant [member regen_rate] per second.
+	CURVE, ## Regenerates at a rate scaled by [member regen_curve], sampled by current percentage.
+}
 
 @export_category("Resource Initialization")
 @export var resource_name : String
@@ -25,8 +29,16 @@ signal regeneration_finished()
 ## If true, [member current_resource_quantity] will regenerate automatically over time
 ## up to [member max_resource_quantity].
 @export var regen_enabled : bool = false
-## Amount of resource regenerated per second while regeneration is active.
+## Determines how [member regen_rate] is applied over time.
+@export var regen_type : RegenType = RegenType.LINEAR
+## Amount of resource regenerated per second while regeneration is active (used directly
+## in [constant RegenType.LINEAR], and as a multiplier for [member regen_curve] in
+## [constant RegenType.CURVE]).
 @export var regen_rate : float = 5.0
+## Sampled by current resource percentage (0.0 to 1.0) to scale [member regen_rate] when
+## [member regen_type] is [constant RegenType.CURVE]. For example, a curve that starts low
+## and rises can simulate regen that accelerates the longer it continues.
+@export var regen_curve : Curve
 ## Seconds to wait after [member current_resource_quantity] decreases before
 ## regeneration resumes. Set to 0.0 to regenerate continuously.
 @export var regen_delay : float = 0.0
@@ -69,7 +81,6 @@ func set_current_resource_quantity(new_quantity : float) -> void:
 	elif is_zero_approx(current_resource_quantity):
 		current_resource_quantity_at_min.emit()
 
-
 ## Sets the [member max_resource_quantity] to a new quantity
 func set_max_resource_quantity(new_quantity : float) -> void:
 	if new_quantity < 0.0:
@@ -92,6 +103,14 @@ func change_current_resource_quantity(amount : float) -> void:
 func change_max_resource_quantity(amount : float) -> void:
 	set_max_resource_quantity(max_resource_quantity + amount)
 
+## Returns [member current_resource_quantity] as a percentage of [member max_resource_quantity],
+## in the range 0.0 to 1.0. Returns 0.0 if [member max_resource_quantity] is 0 to avoid
+## dividing by zero.
+func get_percentage() -> float:
+	if is_zero_approx(max_resource_quantity):
+		return 0.0
+	return current_resource_quantity / max_resource_quantity
+
 #-----------------#
 # Private Methods #
 #-----------------#
@@ -108,8 +127,18 @@ func _process_regeneration(delta : float) -> void:
 		_is_regenerating = true
 		regeneration_started.emit()
 
-	set_current_resource_quantity(current_resource_quantity + regen_rate * delta)
+	set_current_resource_quantity(current_resource_quantity + _get_current_regen_amount(delta))
 
 	if is_equal_approx(current_resource_quantity, max_resource_quantity):
 		_is_regenerating = false
 		regeneration_finished.emit()
+
+func _get_current_regen_amount(delta : float) -> float:
+	match regen_type:
+		RegenType.CURVE:
+			if regen_curve == null:
+				push_warning("ResourceComponent: regen_type is CURVE but no regen_curve is assigned. Falling back to LINEAR.")
+				return regen_rate * delta
+			return regen_curve.sample(get_percentage()) * regen_rate * delta
+		_:
+			return regen_rate * delta
