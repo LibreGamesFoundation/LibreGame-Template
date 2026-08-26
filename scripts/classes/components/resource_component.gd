@@ -76,14 +76,18 @@ func set_current_resource_quantity(new_quantity : float) -> void:
 		_time_since_last_decrease = 0.0
 		if _is_regenerating:
 			_is_regenerating = false
+			if debug: print("%s: regeneration interrupted" % name)
 			regeneration_finished.emit()
 
+	if debug: print("%s: %s changed from %.2f to %.2f" % [name, resource_name, current_resource_quantity, new_quantity])
 	current_resource_quantity_changed.emit(current_resource_quantity, new_quantity)
 	current_resource_quantity = new_quantity
 
 	if is_equal_approx(current_resource_quantity, max_resource_quantity):
+		if debug: print("%s: %s reached max" % [name, resource_name])
 		current_resource_quantity_at_max.emit()
 	elif is_zero_approx(current_resource_quantity):
+		if debug: print("%s: %s reached min" % [name, resource_name])
 		current_resource_quantity_at_min.emit()
 
 ## Sets the [member max_resource_quantity] to a new quantity
@@ -92,6 +96,7 @@ func set_max_resource_quantity(new_quantity : float) -> void:
 		set_max_resource_quantity(0.0)
 		return
 
+	if debug: print("%s: max %s changed from %.2f to %.2f" % [name, resource_name, max_resource_quantity, new_quantity])
 	max_resource_quantity_changed.emit(max_resource_quantity, new_quantity)
 	max_resource_quantity = new_quantity
 
@@ -130,12 +135,14 @@ func _process_regeneration(delta : float) -> void:
 
 	if not _is_regenerating:
 		_is_regenerating = true
+		if debug: print("%s: regeneration started" % name)
 		regeneration_started.emit()
 
 	set_current_resource_quantity(current_resource_quantity + _get_current_regen_amount(delta))
 
 	if is_equal_approx(current_resource_quantity, max_resource_quantity):
 		_is_regenerating = false
+		if debug: print("%s: regeneration finished" % name)
 		regeneration_finished.emit()
 
 func _get_current_regen_amount(delta : float) -> float:

@@ -50,6 +50,7 @@ func add_item(item : InventoryItem, quantity : int = 1) -> int:
 
 	while remaining > 0:
 		if is_full():
+			if debug: print("%s: inventory full, %d of %s could not be added" % [name, remaining, item.display_name])
 			inventory_full.emit()
 			break
 
@@ -59,6 +60,7 @@ func add_item(item : InventoryItem, quantity : int = 1) -> int:
 
 		_slots.append(InventorySlot.new(item, stack_amount))
 		remaining -= stack_amount
+		if debug: print("%s: added %d x %s (new stack)" % [name, stack_amount, item.display_name])
 		item_added.emit(item, stack_amount)
 
 	if remaining != quantity:
@@ -88,11 +90,15 @@ func remove_item(item : InventoryItem, quantity : int = 1) -> int:
 			else:
 				item_quantity_changed.emit(item, old_quantity, slot.quantity)
 
+			if debug: print("%s: removed %d x %s" % [name, removed, item.display_name])
 			item_removed.emit(item, removed)
 		i -= 1
 
 	if remaining != quantity:
 		inventory_changed.emit()
+
+	if remaining > 0 and debug:
+		print("%s: could not remove %d x %s (not enough in inventory)" % [name, remaining, item.display_name])
 
 	return remaining
 
@@ -129,6 +135,7 @@ func get_free_slot_count() -> int:
 ## Removes all items from the inventory.
 func clear() -> void:
 	_slots.clear()
+	if debug: print("%s: inventory cleared" % name)
 	inventory_changed.emit()
 
 
@@ -156,6 +163,7 @@ func _fill_existing_stacks(item : InventoryItem, quantity : int) -> int:
 		var old_quantity := slot.quantity
 		slot.quantity += added
 		remaining -= added
+		if debug: print("%s: stacked %d x %s (%d -> %d)" % [name, added, item.display_name, old_quantity, slot.quantity])
 		item_quantity_changed.emit(item, old_quantity, slot.quantity)
 
 	return remaining
