@@ -1,4 +1,3 @@
-@icon("res://assets/components/PoolableComponentNode.svg")
 class_name PoolableComponent
 extends ComponentBase
 ## Handles activation/deactivation lifecycle for a node managed by an [ObjectPool].

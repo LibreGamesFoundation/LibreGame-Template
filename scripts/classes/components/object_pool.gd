@@ -1,4 +1,3 @@
-@icon("res://assets/components/ObjectPoolNode.svg")
 class_name ObjectPool
 extends ComponentBase
 ## Generic object pool for reusing scene instances instead of instantiate()/queue_free().
