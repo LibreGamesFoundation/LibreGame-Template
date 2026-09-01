@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="16"
+   height="16"
+   fill="none"
+   viewBox="0 0 16 16"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="InteractionArea3D.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="50.5"
+     inkscape:cx="7.990099"
+     inkscape:cy="8"
+     inkscape:window-width="1920"
+     inkscape:window-height="1014"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <path
+     fill="#ffffff"
+     d="M4 14H2a1 1 0 0 1-1-1V8h3zM7 9a1 1 0 0 0 2 0V8h2v6H5V8h2zM15 13a1 1 0 0 1-1 1h-2V8h3zM4.64 2C4.22 2.87 4 3.828 4 4.803V7H1V5a3 3 0 0 1 3-3zM10.22 2c.508.846.78 1.813.78 2.803V7H9V6H7v1H5V4.803c0-.99.272-1.957.78-2.803zM12 2a3 3 0 0 1 3 3v2h-3V4.803c0-.975-.22-1.932-.64-2.803z"
+     id="path1"
+     style="fill:#fc5c5c;fill-opacity:1" />
+</svg>
