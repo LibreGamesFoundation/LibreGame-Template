@@ -22,6 +22,8 @@ Template for 2D and 3D Godot projects, built to be forked for bigger projects.
 | Hurtbox3D |![](assets/components/Hurtbox3DNode.svg)|Receives hits from any Hitbox3D it overlaps and forwards damage to a target | Area3D |
 | InventoryComponent |![](assets/components/InventoryComponentNode.svg)|Component for storing and managing a collection of stackable items | ComponentBase |
 | ResourceComponent |![](assets/components/ResourceComponentNode.svg)|Component for creating and managing any type of singular resource | ComponentBase |
+| StateMachine |![](assets/components/ComponentNode.svg)|Manages State Nodes | ComponentBase |
+| State |![](assets/components/ComponentNode.svg)|Base class for all States. Designed to be used with StateMachine Node | ComponentBase |
 
 ### Resources
 | Resource Name | Description  | Extends From |
