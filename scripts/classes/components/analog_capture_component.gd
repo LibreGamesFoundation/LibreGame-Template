@@ -6,7 +6,6 @@ extends ComponentBase
 ## Designed to be used with a CameraController. Call [method consume_input] once per
 ## frame to retrieve and clear accumulated look input.
 ##
-## @experimental
 
 signal mouse_mode_changed(old_mode : Input.MouseMode, new_mode : Input.MouseMode)
 signal vibration_started()
