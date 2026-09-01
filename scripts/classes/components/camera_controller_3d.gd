@@ -21,10 +21,13 @@ signal footstep()
 
 @export_group("Headbob")
 @export var headbob_enabled : bool = true
-@export_range(0.0, 0.1, 0.001) var bob_pitch : float = 0.05
-@export_range(0.0, 0.1, 0.001) var bob_roll : float = 0.025
-@export_range(0.0, 0.04, 0.001) var bob_up : float = 0.005
-@export_range(3.0, 8.0, 0.1) var bob_frequency : float = 6.0
+## Overall multiplier applied to all headbob values below — the fastest way to
+## tune bob strength without touching each value individually.
+@export_range(0.0, 1.0, 0.05) var headbob_intensity : float = 0.3
+@export_range(0.0, 0.1, 0.001) var bob_pitch : float = 0.015
+@export_range(0.0, 0.1, 0.001) var bob_roll : float = 0.008
+@export_range(0.0, 0.04, 0.001) var bob_up : float = 0.0025
+@export_range(3.0, 8.0, 0.1) var bob_frequency : float = 5.0
 ## Minimum horizontal speed (units/sec) on [member player_controller] before
 ## headbob is applied, to avoid bobbing from tiny physics jitter while idle.
 @export var bob_speed_threshold : float = 0.1
@@ -101,9 +104,9 @@ func _update_headbob(delta : float) -> void:
 	var previous_step_timer := _step_timer
 	_step_timer += delta * bob_frequency
 
-	_bob_offset.y = sin(_step_timer) * bob_up
-	_bob_rotation.x = sin(_step_timer * 2.0) * bob_pitch
-	_bob_rotation.z = cos(_step_timer) * bob_roll
+	_bob_offset.y = sin(_step_timer) * bob_up * headbob_intensity
+	_bob_rotation.x = sin(_step_timer * 2.0) * bob_pitch * headbob_intensity
+	_bob_rotation.z = cos(_step_timer) * bob_roll * headbob_intensity
 
 	# Emit a footstep once per half-cycle (each foot's contact point).
 	if int(_step_timer / PI) != int(previous_step_timer / PI):

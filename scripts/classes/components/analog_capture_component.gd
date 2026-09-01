@@ -59,7 +59,7 @@ func _unhandled_input(event : InputEvent) -> void:
 		return
 	if event is InputEventMouseMotion:
 		var motion := event as InputEventMouseMotion
-		_mouse_input += -motion.screen_relative * mouse_sensitivity * _get_invert_multiplier()
+		_mouse_input += -motion.screen_relative * (mouse_sensitivity/5) * _get_invert_multiplier()
 
 	if debug:
 		print(_mouse_input)
