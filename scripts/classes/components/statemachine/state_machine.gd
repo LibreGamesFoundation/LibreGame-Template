@@ -23,21 +23,10 @@ func _ready() -> void:
 	current_state.state_machine = self
 	current_state._enter(current_state)
 
-func _on_child_transition(new_state_name : String) -> void:
-	var new_state = states.get(new_state_name)
-	if new_state == null:
-		push_warning("State Does Not Exist: ", new_state_name)
-		return
-	if new_state != current_state:
-		current_state._exit()
-		new_state._enter(current_state)
-		
-		if debug: print("Transitioning from ", current_state, " to ", new_state)
-		
-		current_state = new_state
 
 func _process(delta: float) -> void:
 	current_state._update(delta)
+
 
 func _physics_process(delta: float) -> void:
 	current_state._physics_update(delta)
@@ -51,3 +40,20 @@ func get_state_from_name(state_name : String) -> State:
 		push_error("State does not exist: ", state_name, " in StateMachine: ", self.name)
 		return null
 	return states.get(state_name)
+
+#-----------------#
+# Private Methods #
+#-----------------#
+
+func _on_child_transition(new_state_name : String) -> void:
+	var new_state = states.get(new_state_name)
+	if new_state == null:
+		push_warning("State Does Not Exist: ", new_state_name)
+		return
+	if new_state != current_state:
+		current_state._exit()
+		new_state._enter(current_state)
+		
+		if debug: print("Transitioning from ", current_state, " to ", new_state)
+		
+		current_state = new_state
