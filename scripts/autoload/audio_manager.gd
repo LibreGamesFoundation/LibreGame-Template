@@ -5,7 +5,6 @@ extends Node
 ## and frees them automatically when finished. Autoloaded as [code]AudioManager[/code];
 ## call from anywhere without needing a reference to a specific node.
 ##
-## @experimental
 
 signal audio_started(stream : AudioStream)
 signal audio_finished(stream : AudioStream)
