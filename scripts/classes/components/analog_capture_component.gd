@@ -14,6 +14,9 @@ signal vibration_finished()
 @export_category("Mouse Capture Settings")
 @export var current_mouse_mode : Input.MouseMode = Input.MOUSE_MODE_CAPTURED
 @export var mouse_sensitivity : float = 0.005
+@export var mouse_sensitivity_divisor : float = 5.0
+@export var mouse_visible_states : Array[GamestateManager.GameState] = [GamestateManager.GameState.MENU, GamestateManager.GameState.PAUSED]
+@export var mouse_capture_states : Array[GamestateManager.GameState] = [GamestateManager.GameState.PLAYING]
 
 @export_category("Joypad Capture Settings")
 @export var joy_sensitivity : float = 0.05
@@ -40,6 +43,11 @@ var _joy_input : Vector2
 
 func _ready() -> void:
 	Input.mouse_mode = current_mouse_mode
+	GamestateManager.game_state_changed.connect(_on_game_state_changed)
+
+	# Sync immediately to the manager's current state rather than waiting for
+	# the next transition, so mouse mode is correct from the first frame.
+	_on_game_state_changed(GamestateManager.current_state, GamestateManager.current_state)
 
 
 func _physics_process(_delta : float) -> void:
@@ -59,7 +67,7 @@ func _unhandled_input(event : InputEvent) -> void:
 		return
 	if event is InputEventMouseMotion:
 		var motion := event as InputEventMouseMotion
-		_mouse_input += -motion.screen_relative * (mouse_sensitivity/5) * _get_invert_multiplier()
+		_mouse_input += -motion.screen_relative * (mouse_sensitivity / mouse_sensitivity_divisor) * _get_invert_multiplier()
 
 	if debug:
 		print(_mouse_input)
@@ -80,6 +88,7 @@ func consume_input() -> Vector2:
 func set_mouse_capture_mode(new_mode : Input.MouseMode) -> void:
 	if new_mode == current_mouse_mode:
 		return
+	if debug: print("%s: mouse mode %s -> %s" % [name, current_mouse_mode, new_mode])
 	mouse_mode_changed.emit(current_mouse_mode, new_mode)
 	current_mouse_mode = new_mode
 	Input.mouse_mode = new_mode
@@ -102,12 +111,14 @@ func play_controller_vibration(weak_magnitude : float = -1.0, strong_magnitude :
 	var length := vibration_duration if duration < 0.0 else duration
 
 	Input.start_joy_vibration(vibration_device, weak, strong, length)
+	if debug: print("%s: vibration started (weak %.2f, strong %.2f, %.2fs)" % [name, weak, strong, length])
 	vibration_started.emit()
 
 
 ## Immediately stops vibration on [member vibration_device].
 func stop_controller_vibration() -> void:
 	Input.stop_joy_vibration(vibration_device)
+	if debug: print("%s: vibration stopped" % name)
 	vibration_finished.emit()
 
 #-----------------#
@@ -125,3 +136,11 @@ func _get_invert_multiplier() -> Vector2:
 		-1.0 if invert_look_x else 1.0,
 		-1.0 if invert_look_y else 1.0
 	)
+
+
+func _on_game_state_changed(_previous_state : GamestateManager.GameState, new_state : GamestateManager.GameState) -> void:
+	# mouse_visible_states takes precedence if a state is misconfigured into both arrays.
+	if mouse_visible_states.has(new_state):
+		set_mouse_capture_mode(Input.MOUSE_MODE_VISIBLE)
+	elif mouse_capture_states.has(new_state):
+		set_mouse_capture_mode(Input.MOUSE_MODE_CAPTURED)
