@@ -9,7 +9,7 @@ Template for 2D and 3D Godot projects, built to be forked for bigger projects.
 
 ## Features
 
-### Components
+### Components / Nodes
 |  Class Name   | Icon |  Description  | Extends From |
 | ------------- | :-------------: | -------------- | -------------- |
 | ComponentBase |![](assets/components/ComponentNode.svg)|Base class for all Components that exist outside of 2D or 3D space | Node |
@@ -24,8 +24,16 @@ Template for 2D and 3D Godot projects, built to be forked for bigger projects.
 | InteractionArea3D |![](assets/components/InteractionArea3D.svg)|Component for interactable 3D objects to be interacted with by the InteractionComponent | Area3D |
 | InventoryComponent |![](assets/components/InventoryComponentNode.svg)|Component for storing and managing a collection of stackable items | ComponentBase |
 | ResourceComponent |![](assets/components/ResourceComponentNode.svg)|Component for creating and managing any type of singular resource | ComponentBase |
+| SaveComponent |![](assets/components/SaveComponentNode.svg)|Marks target as participating in the save system. This is an experimental component. | ComponentBase |
 | StateMachine |![](assets/components/StateMachineNode.svg)|Manages State Nodes | ComponentBase |
 | State |![](assets/components/StateNode.svg)|Base class for all States. Designed to be used with StateMachine Node | ComponentBase |
+
+### Autoload
+|  Name |  Description  |
+| ------------- | ------------- |
+| AudioManager | Global manager for one-shot audio playback |
+| GamestateManager | Global manager for overall game state (menu, playing, paused, cutscene, etc) |
+| SaveManager | Global manager for collecting, writing, and restoring game save data. This is an experimental autoload. |
 
 ### Resources
 | Resource Name | Description  | Extends From |
