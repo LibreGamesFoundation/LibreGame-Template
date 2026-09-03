@@ -42,7 +42,6 @@ var _joy_input : Vector2
 
 
 func _ready() -> void:
-	Input.mouse_mode = current_mouse_mode
 	GamestateManager.game_state_changed.connect(_on_game_state_changed)
 
 	# Sync immediately to the manager's current state rather than waiting for

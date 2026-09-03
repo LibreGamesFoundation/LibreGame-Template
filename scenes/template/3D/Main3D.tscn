@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cog2rtg4qdbd4"]
+
+[ext_resource type="Script" uid="uid://buwg0njnhuk42" path="res://scenes/template/3D/main_3d.gd" id="1_nafyr"]
+
+[node name="Main3D" type="Node" unique_id=449132892]
+script = ExtResource("1_nafyr")
+
+[node name="World" type="Node3D" parent="." unique_id=1890799380]
+
+[node name="LevelRoot" type="Node3D" parent="World" unique_id=1194100623]
+unique_name_in_owner = true
+
+[node name="EntityRoot" type="Node3D" parent="World" unique_id=1786331250]
+unique_name_in_owner = true
+
+[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1341281792]
+process_mode = 2
+
+[node name="PauseRoot" type="Control" parent="PauseLayer" unique_id=577865216]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1352244518]
+
+[node name="TransitionRoot" type="Control" parent="TransitionLayer" unique_id=318783705]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DebugLayer" type="CanvasLayer" parent="." unique_id=1688153910]
+
+[node name="DebugRoot" type="Control" parent="DebugLayer" unique_id=1618606612]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
