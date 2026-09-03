@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LibreGame Template"
-run/main_scene="uid://bp2w08fr4truy"
+run/main_scene="uid://cog2rtg4qdbd4"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

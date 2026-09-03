@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cog2rtg4qdbd4"]
 
 [ext_resource type="Script" uid="uid://buwg0njnhuk42" path="res://scenes/template/3D/main_3d.gd" id="1_nafyr"]
+[ext_resource type="Theme" uid="uid://bqdt1tfgaool7" path="res://scenes/user_interface/main_menu.theme" id="2_rs2bc"]
 
 [node name="Main3D" type="Node" unique_id=449132892]
 script = ExtResource("1_nafyr")
@@ -13,30 +14,120 @@ unique_name_in_owner = true
 [node name="EntityRoot" type="Node3D" parent="World" unique_id=1786331250]
 unique_name_in_owner = true
 
+[node name="MenuLayer" type="CanvasLayer" parent="." unique_id=1742686882]
+
+[node name="MenuRoot" type="Control" parent="MenuLayer" unique_id=979876183]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuLayer/MenuRoot" unique_id=35740246]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 64
+
+[node name="PanelContainer" type="PanelContainer" parent="MenuLayer/MenuRoot/MarginContainer" unique_id=501021080]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer" unique_id=924023012]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="MainContainer" type="VBoxContainer" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer" unique_id=983994527]
+layout_mode = 2
+theme = ExtResource("2_rs2bc")
+
+[node name="TitleLabel" type="Label" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/MainContainer" unique_id=1979800592]
+layout_mode = 2
+theme = ExtResource("2_rs2bc")
+text = "LibreGame"
+horizontal_alignment = 1
+
+[node name="MenuLabel" type="Label" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/MainContainer" unique_id=459329387]
+layout_mode = 2
+theme = ExtResource("2_rs2bc")
+theme_override_font_sizes/font_size = 48
+text = "Main Menu"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/MainContainer" unique_id=516719523]
+layout_mode = 2
+theme = ExtResource("2_rs2bc")
+
+[node name="PlayButton" type="Button" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/MainContainer" unique_id=852287696]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_rs2bc")
+text = "Play"
+
+[node name="SettingsButton" type="Button" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/MainContainer" unique_id=937959544]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_rs2bc")
+text = "Settings"
+
+[node name="CreditsButton" type="Button" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/MainContainer" unique_id=1579896587]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_rs2bc")
+text = "Credits"
+
+[node name="QuitButton" type="Button" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/MainContainer" unique_id=1113162940]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_rs2bc")
+text = "Quit"
+
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1341281792]
 process_mode = 2
 
 [node name="PauseRoot" type="Control" parent="PauseLayer" unique_id=577865216]
 unique_name_in_owner = true
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1352244518]
 
 [node name="TransitionRoot" type="Control" parent="TransitionLayer" unique_id=318783705]
 unique_name_in_owner = true
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="DebugLayer" type="CanvasLayer" parent="." unique_id=1688153910]
 
 [node name="DebugRoot" type="Control" parent="DebugLayer" unique_id=1618606612]
 unique_name_in_owner = true
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

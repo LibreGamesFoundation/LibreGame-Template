@@ -7,6 +7,7 @@ extends Node
 @onready var entity_root : Node3D = %EntityRoot
 
 # UI Root Nodes
+@onready var menu_root : Control = %MenuRoot
 @onready var pause_root : Control = %PauseRoot
 @onready var transition_root : Control = %TransitionRoot
 @onready var debug_root : Control = %DebugRoot
