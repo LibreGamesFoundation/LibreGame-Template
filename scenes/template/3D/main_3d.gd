@@ -13,7 +13,8 @@ extends Node
 @onready var debug_root : Control = %DebugRoot
 
 func _ready() -> void:
-	pass
+	_init_level()
+	#_init_player()
 
 #-----------------#
 # Private Methods #
@@ -30,3 +31,6 @@ func _init_player() -> void:
 		return
 	
 	entity_root.add_child(player_node)
+
+func _init_level() -> void:
+	pass
