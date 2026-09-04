@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://bnta01dvpv3mh"]
+
+[ext_resource type="Script" uid="uid://cx1mq1gubqeg8" path="res://scenes/template/player3d/player_3d.gd" id="1_u0osa"]
+[ext_resource type="Script" uid="uid://cjn8mvf5md8t7" path="res://scripts/classes/components/analog_capture_component.gd" id="2_8nhux"]
+[ext_resource type="Script" uid="uid://bmegjucmuk5ya" path="res://scripts/classes/components/camera_controller_3d.gd" id="4_126mq"]
+[ext_resource type="Script" uid="uid://w1vnci1wganu" path="res://scenes/template/player3d/states/movement/movement_state_machine.gd" id="4_13358"]
+[ext_resource type="Script" uid="uid://dbfxnijb1h1rp" path="res://scenes/template/player3d/states/movement/idle_movement_state.gd" id="5_13358"]
+[ext_resource type="Script" uid="uid://clynu5rydyhvt" path="res://scenes/template/player3d/states/movement/walk_movement_state.gd" id="6_wjedk"]
+[ext_resource type="Script" uid="uid://bxd5rp3sculdu" path="res://scenes/template/player3d/states/movement/sprint_movement_state.gd" id="7_rotpu"]
+[ext_resource type="Script" uid="uid://dimuwu5wc4abh" path="res://scenes/template/player3d/states/movement/jump_movement_state.gd" id="8_47irt"]
+[ext_resource type="Script" uid="uid://fu4gysih4oyj" path="res://scenes/template/player3d/states/movement/fall_movement_state.gd" id="9_32kw7"]
+[ext_resource type="Script" uid="uid://cm2r1ghoo48hf" path="res://scripts/classes/components/resource_component.gd" id="10_wjedk"]
+[ext_resource type="Script" uid="uid://ddo0geccqg1h" path="res://scripts/classes/components/save_component.gd" id="11_rotpu"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cefnb"]
+radial_segments = 8
+rings = 4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cefnb"]
+
+[node name="Player3D" type="CharacterBody3D" unique_id=968539437]
+script = ExtResource("1_u0osa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=478629975]
+mesh = SubResource("CapsuleMesh_cefnb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1562534462]
+shape = SubResource("CapsuleShape3D_cefnb")
+
+[node name="AnalogCaptureComponent" type="Node" parent="." unique_id=1907048043]
+script = ExtResource("2_8nhux")
+metadata/_custom_type_script = "uid://cjn8mvf5md8t7"
+
+[node name="CameraController3D" type="Node3D" parent="." unique_id=471264737 node_paths=PackedStringArray("player_controller", "analog_component")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("4_126mq")
+player_controller = NodePath("..")
+analog_component = NodePath("../AnalogCaptureComponent")
+metadata/_custom_type_script = "uid://bmegjucmuk5ya"
+
+[node name="Camera3D" type="Camera3D" parent="CameraController3D" unique_id=284531725]
+
+[node name="MovementStateMachine" type="Node" parent="." unique_id=894410029 node_paths=PackedStringArray("stamina_component", "current_state")]
+script = ExtResource("4_13358")
+stamina_component = NodePath("../StaminaComponent")
+current_state = NodePath("IdleMovementState")
+metadata/_custom_type_script = "uid://w1vnci1wganu"
+
+[node name="IdleMovementState" type="Node" parent="MovementStateMachine" unique_id=392693449]
+script = ExtResource("5_13358")
+metadata/_custom_type_script = "uid://cuuk53h7ib6of"
+
+[node name="WalkMovementState" type="Node" parent="MovementStateMachine" unique_id=1475023159]
+script = ExtResource("6_wjedk")
+speed = 7.0
+metadata/_custom_type_script = "uid://cuuk53h7ib6of"
+
+[node name="SprintMovementState" type="Node" parent="MovementStateMachine" unique_id=2006102316]
+script = ExtResource("7_rotpu")
+speed = 10.0
+metadata/_custom_type_script = "uid://cuuk53h7ib6of"
+
+[node name="JumpMovementState" type="Node" parent="MovementStateMachine" unique_id=54231793]
+script = ExtResource("8_47irt")
+speed = 7.0
+metadata/_custom_type_script = "uid://cuuk53h7ib6of"
+
+[node name="FallMovementState" type="Node" parent="MovementStateMachine" unique_id=1114490010]
+script = ExtResource("9_32kw7")
+speed = 7.0
+metadata/_custom_type_script = "uid://cuuk53h7ib6of"
+
+[node name="StaminaComponent" type="Node" parent="." unique_id=364696623]
+script = ExtResource("10_wjedk")
+resource_name = "Stamina"
+regen_enabled = true
+regen_delay = 5.0
+debug = true
+metadata/_custom_type_script = "uid://cm2r1ghoo48hf"
+
+[node name="SaveComponent" type="Node" parent="." unique_id=1081123923]
+script = ExtResource("11_rotpu")
+metadata/_custom_type_script = "uid://ddo0geccqg1h"
