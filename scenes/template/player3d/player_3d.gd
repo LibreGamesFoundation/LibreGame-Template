@@ -25,11 +25,6 @@ func update_input(speed : float, acceleration : float, deceleration : float) -> 
 		#set_pause_container(!is_paused)
 		pass
 	
-	# If Player Presses Interact, Use InteractionComponent (if it exists)
-	if Input.is_action_just_pressed("interact"):
-		#if interaction_component: interaction_component.interact()
-		pass
-	
 	# Get Direction based on Input
 	_input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	

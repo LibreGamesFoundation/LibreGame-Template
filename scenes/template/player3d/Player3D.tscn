@@ -11,12 +11,15 @@
 [ext_resource type="Script" uid="uid://fu4gysih4oyj" path="res://scenes/template/player3d/states/movement/fall_movement_state.gd" id="9_32kw7"]
 [ext_resource type="Script" uid="uid://cm2r1ghoo48hf" path="res://scripts/classes/components/resource_component.gd" id="10_wjedk"]
 [ext_resource type="Script" uid="uid://ddo0geccqg1h" path="res://scripts/classes/components/save_component.gd" id="11_rotpu"]
+[ext_resource type="Script" uid="uid://cykhbmvex4fcs" path="res://scripts/classes/components/interaction_component_3d.gd" id="12_47irt"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cefnb"]
 radial_segments = 8
 rings = 4
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cefnb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cefnb"]
 
 [node name="Player3D" type="CharacterBody3D" unique_id=968539437]
 script = ExtResource("1_u0osa")
@@ -81,3 +84,14 @@ metadata/_custom_type_script = "uid://cm2r1ghoo48hf"
 [node name="SaveComponent" type="Node" parent="." unique_id=1081123923]
 script = ExtResource("11_rotpu")
 metadata/_custom_type_script = "uid://ddo0geccqg1h"
+
+[node name="InteractionComponent3D" type="Node3D" parent="." unique_id=1637788665 node_paths=PackedStringArray("shape_cast")]
+script = ExtResource("12_47irt")
+shape_cast = NodePath("ShapeCast3D")
+debug = true
+metadata/_custom_type_script = "uid://cykhbmvex4fcs"
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="InteractionComponent3D" unique_id=2047008756]
+shape = SubResource("SphereShape3D_cefnb")
+target_position = Vector3(0, 0.5, -1)
+collide_with_areas = true

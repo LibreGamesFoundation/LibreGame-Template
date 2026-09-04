@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4gbibf54cb5"
-path="res://.godot/imported/InteractionArea3D.svg-de80850f7f54d5dfd531f7597546e5f7.ctex"
+uid="uid://bt61pqtsh7rf6"
+path="res://.godot/imported/InteractionComponent3DNode.svg-137c157501fa00dd099884d52d3fbe63.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/components/InteractionArea3D.svg"
-dest_files=["res://.godot/imported/InteractionArea3D.svg-de80850f7f54d5dfd531f7597546e5f7.ctex"]
+source_file="res://assets/components/InteractionComponent3DNode.svg"
+dest_files=["res://.godot/imported/InteractionComponent3DNode.svg-137c157501fa00dd099884d52d3fbe63.ctex"]
 
 [params]
 
