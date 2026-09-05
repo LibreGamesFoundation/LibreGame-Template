@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cog2rtg4qdbd4"]
 
 [ext_resource type="Script" uid="uid://buwg0njnhuk42" path="res://scenes/template/3D/main_3d.gd" id="1_nafyr"]
+[ext_resource type="Script" uid="uid://57pb7pn0qor6" path="res://scenes/template/3D/menu_root.gd" id="2_rnke2"]
 [ext_resource type="Theme" uid="uid://bqdt1tfgaool7" path="res://scenes/user_interface/main_menu.theme" id="2_rs2bc"]
 
 [node name="Main3D" type="Node" unique_id=449132892]
@@ -25,6 +26,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("2_rnke2")
 
 [node name="MarginContainer" type="MarginContainer" parent="MenuLayer/MenuRoot" unique_id=35740246]
 layout_mode = 1
@@ -42,6 +44,7 @@ theme_override_constants/margin_bottom = 64
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer" unique_id=924023012]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
