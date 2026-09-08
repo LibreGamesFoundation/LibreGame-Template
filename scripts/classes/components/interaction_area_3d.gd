@@ -1,4 +1,4 @@
-@icon("res://assets/interaction/InteractionArea3DNode.svg")
+@icon("res://assets/components/InteractionArea3DNode.svg")
 class_name InteractionArea3D
 extends Area3D
 ## Marks this area as interactable by an [InteractionComponent3D].
@@ -7,7 +7,6 @@ extends Area3D
 ## detect it without a direct type dependency. Configure collision layers/masks
 ## in the editor so only the interactor's [ShapeCast3D] detects this.
 ##
-## @experimental
 
 signal focused(interactor : Node)
 signal unfocused(interactor : Node)

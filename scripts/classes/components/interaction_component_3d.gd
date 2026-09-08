@@ -7,7 +7,6 @@ extends ComponentBase
 ## the camera pointing forward. Casts every frame to track focus, so UI (prompts,
 ## outline shaders) can react to [signal focus_changed] in real time.
 ##
-## @experimental
 
 signal focus_changed(old_target : InteractionArea3D, new_target : InteractionArea3D)
 signal interaction_succeeded(target : InteractionArea3D)
