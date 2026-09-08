@@ -92,7 +92,16 @@ func _register_menus() -> void:
 
 func _connect_all_buttons() -> void:
 	for menu_name in _menus:
-		_connect_buttons_recursive(_menus[menu_name])
+		var menu : Container = _menus[menu_name]
+		if menu.get_script() != null:
+			_connect_panel_signals(menu)
+		else:
+			_connect_buttons_recursive(menu)
+
+
+func _connect_panel_signals(panel : Container) -> void:
+	if panel.has_signal("back_requested"):
+		panel.back_requested.connect(go_back)
 
 
 func _connect_buttons_recursive(node : Node) -> void:

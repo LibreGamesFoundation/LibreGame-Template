@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://buwg0njnhuk42" path="res://scenes/template/3D/main_3d.gd" id="1_nafyr"]
 [ext_resource type="Script" uid="uid://57pb7pn0qor6" path="res://scenes/template/3D/menu_root.gd" id="2_rnke2"]
 [ext_resource type="Theme" uid="uid://bqdt1tfgaool7" path="res://scenes/user_interface/main_menu.theme" id="2_rs2bc"]
+[ext_resource type="PackedScene" uid="uid://rc1k3pa7d71h" path="res://scenes/user_interface/settings/settings_container.tscn" id="4_j11la"]
 
 [node name="Main3D" type="Node" unique_id=449132892]
 script = ExtResource("1_nafyr")
@@ -54,6 +55,7 @@ theme_override_constants/margin_bottom = 32
 
 [node name="MainContainer" type="VBoxContainer" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer" unique_id=983994527]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme = ExtResource("2_rs2bc")
 
@@ -98,34 +100,9 @@ size_flags_vertical = 3
 theme = ExtResource("2_rs2bc")
 text = "Quit"
 
-[node name="SettingsContainer" type="VBoxContainer" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer" unique_id=1764806708]
+[node name="SettingsContainer" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer" unique_id=845916395 instance=ExtResource("4_j11la")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
-theme = ExtResource("2_rs2bc")
-
-[node name="TitleLabel" type="Label" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/SettingsContainer" unique_id=1545540333]
-layout_mode = 2
-theme = ExtResource("2_rs2bc")
-text = "LibreGame"
-horizontal_alignment = 1
-
-[node name="MenuLabel" type="Label" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/SettingsContainer" unique_id=1647154920]
-layout_mode = 2
-theme = ExtResource("2_rs2bc")
-theme_override_font_sizes/font_size = 48
-text = "Settings"
-horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/SettingsContainer" unique_id=964607154]
-layout_mode = 2
-theme = ExtResource("2_rs2bc")
-
-[node name="BackButton" type="Button" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/SettingsContainer" unique_id=1701661850]
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("2_rs2bc")
-text = "Back"
 
 [node name="CreditsContainer" type="VBoxContainer" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer" unique_id=1025031831]
 unique_name_in_owner = true

@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://rc1k3pa7d71h"]
+
+[ext_resource type="Theme" uid="uid://bqdt1tfgaool7" path="res://scenes/user_interface/main_menu.theme" id="1_s0t46"]
+[ext_resource type="Script" uid="uid://caovjnh8rmxk6" path="res://scenes/user_interface/settings/settings_container.gd" id="2_eq17k"]
+[ext_resource type="PackedScene" uid="uid://42kkfy3k6qdi" path="res://scenes/user_interface/settings/keybind_h_box.tscn" id="3_gfpi5"]
+
+[node name="SettingsContainer" type="VBoxContainer" unique_id=845916395 node_paths=PackedStringArray("master_slider", "music_slider", "sfx_slider", "window_mode_option", "vsync_checkbox", "max_fps_spinbox", "keybind_list", "audio_button", "audio_control", "video_button", "video_control", "keybind_button", "keybind_control", "back_button")]
+theme = ExtResource("1_s0t46")
+script = ExtResource("2_eq17k")
+master_slider = NodePath("ScrollContainer/VBoxContainer/AudioControl/MasterHBox/HSlider")
+music_slider = NodePath("ScrollContainer/VBoxContainer/AudioControl/MusicHBox/HSlider")
+sfx_slider = NodePath("ScrollContainer/VBoxContainer/AudioControl/SFXHBox/HSlider")
+window_mode_option = NodePath("ScrollContainer/VBoxContainer/VideoControl/WindowModeHBox/OptionButton")
+vsync_checkbox = NodePath("ScrollContainer/VBoxContainer/VideoControl/VsyncHBox/CheckBox")
+max_fps_spinbox = NodePath("ScrollContainer/VBoxContainer/VideoControl/FPSHBox/SpinBox")
+keybind_list = NodePath("ScrollContainer/VBoxContainer/KeybindList")
+keybind_row_scene = ExtResource("3_gfpi5")
+audio_button = NodePath("NavContainer/AudioButton")
+audio_control = NodePath("ScrollContainer/VBoxContainer/AudioControl")
+video_button = NodePath("NavContainer/VideoButton")
+video_control = NodePath("ScrollContainer/VBoxContainer/VideoControl")
+keybind_button = NodePath("NavContainer/KeybindButton")
+keybind_control = NodePath("ScrollContainer/VBoxContainer/KeybindList")
+back_button = NodePath("BackButton")
+
+[node name="TitleLabel" type="Label" parent="." unique_id=2081249040]
+layout_mode = 2
+theme = ExtResource("1_s0t46")
+text = "LibreGame"
+horizontal_alignment = 1
+
+[node name="MenuLabel" type="Label" parent="." unique_id=1319661285]
+layout_mode = 2
+theme = ExtResource("1_s0t46")
+theme_override_font_sizes/font_size = 48
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="NavContainer" type="HBoxContainer" parent="." unique_id=341997210]
+layout_mode = 2
+
+[node name="AudioButton" type="Button" parent="NavContainer" unique_id=668489904]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "AUDIO"
+
+[node name="VideoButton" type="Button" parent="NavContainer" unique_id=925539565]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "VIDEO"
+
+[node name="KeybindButton" type="Button" parent="NavContainer" unique_id=1733536108]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CONTROLS"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=247375151]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=2144863545]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AudioControl" type="VBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=541869572]
+layout_mode = 2
+
+[node name="MasterHBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/AudioControl" unique_id=1709856987]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/AudioControl/MasterHBox" unique_id=1575897706]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="HSlider" type="HSlider" parent="ScrollContainer/VBoxContainer/AudioControl/MasterHBox" unique_id=932090631]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="MusicHBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/AudioControl" unique_id=360184179]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/AudioControl/MusicHBox" unique_id=666470871]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="HSlider" type="HSlider" parent="ScrollContainer/VBoxContainer/AudioControl/MusicHBox" unique_id=488944089]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="SFXHBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/AudioControl" unique_id=1511025997]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/AudioControl/SFXHBox" unique_id=867449513]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="HSlider" type="HSlider" parent="ScrollContainer/VBoxContainer/AudioControl/SFXHBox" unique_id=839509657]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="VideoControl" type="VBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1666360475]
+visible = false
+layout_mode = 2
+
+[node name="WindowModeHBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/VideoControl" unique_id=1436576704]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/VideoControl/WindowModeHBox" unique_id=43857768]
+layout_mode = 2
+text = "Window Mode"
+
+[node name="OptionButton" type="OptionButton" parent="ScrollContainer/VBoxContainer/VideoControl/WindowModeHBox" unique_id=2027140471]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VsyncHBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/VideoControl" unique_id=508864144]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/VideoControl/VsyncHBox" unique_id=1014052091]
+layout_mode = 2
+text = "Vsync"
+
+[node name="CheckBox" type="CheckBox" parent="ScrollContainer/VBoxContainer/VideoControl/VsyncHBox" unique_id=1745374821]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FPSHBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/VideoControl" unique_id=1264073272]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/VideoControl/FPSHBox" unique_id=104669710]
+layout_mode = 2
+text = "FPS"
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/VideoControl/FPSHBox" unique_id=635272956]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 240.0
+value = 60.0
+
+[node name="KeybindList" type="VBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=889859312]
+visible = false
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="." unique_id=957966850]
+layout_mode = 2
+theme = ExtResource("1_s0t46")
+
+[node name="BackButton" type="Button" parent="." unique_id=311618177]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_s0t46")
+text = "Back"

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://42kkfy3k6qdi"]
+
+[ext_resource type="Script" uid="uid://br87vdtyidi6" path="res://scenes/user_interface/settings/keybind_h_box.gd" id="1_ak0sx"]
+
+[node name="KeybindHBox" type="HBoxContainer" unique_id=1395869980 node_paths=PackedStringArray("action_label", "binding_label", "rebind_button")]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+script = ExtResource("1_ak0sx")
+action_label = NodePath("ActionLabel")
+binding_label = NodePath("BindingLabel")
+rebind_button = NodePath("RebindButton")
+
+[node name="ActionLabel" type="Label" parent="." unique_id=1843364199]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="BindingLabel" type="Label" parent="." unique_id=1857365695]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="RebindButton" type="Button" parent="." unique_id=667542140]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Rebind"
