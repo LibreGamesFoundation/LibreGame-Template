@@ -47,3 +47,10 @@ func update_input(speed : float, acceleration : float, deceleration : float) -> 
 
 func update_velocity() -> void:
 	move_and_slide()
+
+
+func _on_interaction_component_3d_focus_changed(old_target: InteractionArea3D, new_target: InteractionArea3D) -> void:
+	if new_target == null:
+		$HUDLayer/MarginContainer/Label.text = ""
+	else:
+		$HUDLayer/MarginContainer/Label.text = ("[E] " + new_target.interact_prompt)
