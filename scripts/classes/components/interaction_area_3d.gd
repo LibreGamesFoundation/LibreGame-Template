@@ -16,6 +16,11 @@ signal prompt_changed(new_prompt : String)
 @export_category("Interaction Settings")
 ## If false, this area is ignored by [InteractionComponent3D] entirely.
 @export var interaction_enabled : bool = true
+## Maximum uses before [member interaction_enabled] is automatically set to false.
+## Set to 0 for unlimited uses.
+@export var max_uses : int = 0
+
+@export_category("Prompt Settings")
 ## Shown by UI (e.g. "Press E to open") while this area has focus. Left to the
 ## consumer of [signal focused] to actually render.
 @export var interact_prompt : String = "Interact"
@@ -23,9 +28,6 @@ signal prompt_changed(new_prompt : String)
 ## fires once [member max_uses] is reached and [member interaction_enabled] becomes
 ## false. Leave blank to keep showing [member interact_prompt] unchanged.
 @export var interact_prompt_depleted : String = ""
-## Maximum uses before [member interaction_enabled] is automatically set to false.
-## Set to 0 for unlimited uses.
-@export var max_uses : int = 0
 
 @export_category("Debug")
 @export var debug : bool = false
