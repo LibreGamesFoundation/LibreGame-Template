@@ -17,7 +17,7 @@ unique_name_in_owner = true
 
 [node name="MenuLayer" type="CanvasLayer" parent="." unique_id=1742686882]
 
-[node name="MenuRoot" type="Control" parent="MenuLayer" unique_id=979876183]
+[node name="MenuRoot" type="Control" parent="MenuLayer" unique_id=979876183 node_paths=PackedStringArray("menu_container")]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
@@ -27,6 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_rnke2")
+menu_container = NodePath("MarginContainer/PanelContainer/MarginContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="MenuLayer/MenuRoot" unique_id=35740246]
 layout_mode = 1
@@ -96,6 +97,72 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_rs2bc")
 text = "Quit"
+
+[node name="SettingsContainer" type="VBoxContainer" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer" unique_id=1764806708]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme = ExtResource("2_rs2bc")
+
+[node name="TitleLabel" type="Label" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/SettingsContainer" unique_id=1545540333]
+layout_mode = 2
+theme = ExtResource("2_rs2bc")
+text = "LibreGame"
+horizontal_alignment = 1
+
+[node name="MenuLabel" type="Label" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/SettingsContainer" unique_id=1647154920]
+layout_mode = 2
+theme = ExtResource("2_rs2bc")
+theme_override_font_sizes/font_size = 48
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/SettingsContainer" unique_id=964607154]
+layout_mode = 2
+theme = ExtResource("2_rs2bc")
+
+[node name="BackButton" type="Button" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/SettingsContainer" unique_id=1701661850]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_rs2bc")
+text = "Back"
+
+[node name="CreditsContainer" type="VBoxContainer" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer" unique_id=1025031831]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme = ExtResource("2_rs2bc")
+
+[node name="TitleLabel" type="Label" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/CreditsContainer" unique_id=1455300957]
+layout_mode = 2
+theme = ExtResource("2_rs2bc")
+text = "LibreGame"
+horizontal_alignment = 1
+
+[node name="MenuLabel" type="Label" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/CreditsContainer" unique_id=1202604370]
+layout_mode = 2
+theme = ExtResource("2_rs2bc")
+theme_override_font_sizes/font_size = 48
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/CreditsContainer" unique_id=1513224747]
+layout_mode = 2
+theme = ExtResource("2_rs2bc")
+
+[node name="Label" type="Label" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/CreditsContainer" unique_id=571043494]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "John Doe - Developer
+Jane Doe - Artist
+
+LibreGames Foundation - LibreGame Template"
+
+[node name="BackButton" type="Button" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer/CreditsContainer" unique_id=1524157198]
+layout_mode = 2
+theme = ExtResource("2_rs2bc")
+text = "Back"
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1341281792]
 process_mode = 2
