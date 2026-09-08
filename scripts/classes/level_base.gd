@@ -3,6 +3,11 @@ extends Component3D
 
 @export var player_spawn_point : Marker3D
 
+# In the new scene's _ready()
+func _ready() -> void:
+	var params := SceneManager.take_params()
+
+
 #----------------#
 # Public Methods #
 #----------------#
