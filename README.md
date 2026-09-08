@@ -20,8 +20,8 @@ Template for 2D and 3D Godot projects, built to be forked for bigger projects.
 | Hitbox3D |![](assets/components/Hitbox3DNode.svg)|Deals damage to any Hurtbox3D it overlaps | Area3D |
 | Hurtbox2D |![](assets/components/Hurtbox2DNode.svg)|Receives hits from any Hitbox2D it overlaps and forwards damage to a target | Area2D |
 | Hurtbox3D |![](assets/components/Hurtbox3DNode.svg)|Receives hits from any Hitbox3D it overlaps and forwards damage to a target | Area3D |
-| InteractionComponent |![](assets/components/InteractionComponent.svg)|Component for interacting with 2D/3D InteractionAreas | ComponentBase |
-| InteractionArea3D |![](assets/components/InteractionArea3D.svg)|Component for interactable 3D objects to be interacted with by the InteractionComponent | Area3D |
+| InteractionComponent3D |![](assets/components/InteractionComponent3DNode.svg)|Component for interacting with 2D/3D InteractionAreas | ComponentBase |
+| InteractionArea3D |![](assets/components/InteractionArea3DNode.svg)|Component for interactable 3D objects to be interacted with by the InteractionComponent | Area3D |
 | InventoryComponent |![](assets/components/InventoryComponentNode.svg)|Component for storing and managing a collection of stackable items | ComponentBase |
 | ResourceComponent |![](assets/components/ResourceComponentNode.svg)|Component for creating and managing any type of singular resource | ComponentBase |
 | SaveComponent |![](assets/components/SaveComponentNode.svg)|Marks target as participating in the save system. This is an experimental component. | ComponentBase |
