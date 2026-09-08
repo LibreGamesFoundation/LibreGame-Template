@@ -11,6 +11,7 @@ extends Area3D
 signal focused(interactor : Node)
 signal unfocused(interactor : Node)
 signal interacted(interactor : Node)
+signal prompt_changed(new_prompt : String)
 
 @export_category("Interaction Settings")
 ## If false, this area is ignored by [InteractionComponent3D] entirely.
@@ -18,6 +19,10 @@ signal interacted(interactor : Node)
 ## Shown by UI (e.g. "Press E to open") while this area has focus. Left to the
 ## consumer of [signal focused] to actually render.
 @export var interact_prompt : String = "Interact"
+## If non-empty, [member interact_prompt] is set to this and [signal prompt_changed]
+## fires once [member max_uses] is reached and [member interaction_enabled] becomes
+## false. Leave blank to keep showing [member interact_prompt] unchanged.
+@export var interact_prompt_depleted : String = ""
 ## Maximum uses before [member interaction_enabled] is automatically set to false.
 ## Set to 0 for unlimited uses.
 @export var max_uses : int = 0
@@ -51,6 +56,9 @@ func interact(interactor : Node) -> bool:
 		interaction_enabled = false
 		if debug: print("%s: reached max_uses, disabling" % name)
 
+		if not interact_prompt_depleted.is_empty():
+			set_prompt(interact_prompt_depleted)
+
 	return true
 
 
@@ -73,3 +81,12 @@ func reset_uses() -> void:
 	use_count = 0
 	interaction_enabled = true
 	if debug: print("%s: uses reset" % name)
+
+
+## Sets [member interact_prompt] to [param new_prompt] and emits [signal prompt_changed],
+## so any listening UI updates even while this area currently has focus.
+func set_prompt(new_prompt : String) -> void:
+	if new_prompt == interact_prompt:
+		return
+	interact_prompt = new_prompt
+	prompt_changed.emit(interact_prompt)

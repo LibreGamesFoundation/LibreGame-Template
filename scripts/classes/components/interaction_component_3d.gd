@@ -12,8 +12,10 @@ signal focus_changed(old_target : InteractionArea3D, new_target : InteractionAre
 signal interaction_succeeded(target : InteractionArea3D)
 signal interaction_failed(target : InteractionArea3D)
 
+
 @export_category("References")
 @export var shape_cast : ShapeCast3D
+@export var interaction_label : Label
 
 @export_category("Interaction Settings")
 @export var interact_action : StringName = &"interact"
@@ -83,7 +85,7 @@ func _find_closest_interactable() -> InteractionArea3D:
 		var collider := shape_cast.get_collider(i)
 		if not collider is InteractionArea3D:
 			continue
-		if not collider.is_in_group("interactable") or not collider.interaction_enabled:
+		if not collider.is_in_group("interactable"):
 			continue
 
 		var distance := shape_cast.global_position.distance_to(collider.global_position)
