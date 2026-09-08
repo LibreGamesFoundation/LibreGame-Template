@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 AudioManager="*uid://ccreb787iuo3"
 GamestateManager="*uid://dr0s123entkpd"
+SceneManager="*uid://srhvh17non16"
 
 [display]
 

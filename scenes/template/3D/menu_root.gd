@@ -20,7 +20,7 @@ func _on_button_pressed(button_name : String) -> void:
 
 
 func _play_button() -> void:
-	get_tree().change_scene_to_file("res://scenes/template/3D/world_3d.tscn")
+	SceneManager.change_scene("res://scenes/template/3D/world_3d.tscn", {}, GamestateManager.GameState.PLAYING)
 
 
 func _quit_button() -> void:
