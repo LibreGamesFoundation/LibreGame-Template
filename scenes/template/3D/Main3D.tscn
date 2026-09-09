@@ -55,7 +55,6 @@ theme_override_constants/margin_bottom = 32
 
 [node name="MainContainer" type="VBoxContainer" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer" unique_id=983994527]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme = ExtResource("2_rs2bc")
 
@@ -102,6 +101,7 @@ text = "Quit"
 
 [node name="SettingsContainer" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer" unique_id=845916395 instance=ExtResource("4_j11la")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="CreditsContainer" type="VBoxContainer" parent="MenuLayer/MenuRoot/MarginContainer/PanelContainer/MarginContainer" unique_id=1025031831]
