@@ -49,7 +49,7 @@ func _ready() -> void:
 	_on_game_state_changed(GamestateManager.current_state, GamestateManager.current_state)
 
 
-func _physics_process(_delta : float) -> void:
+func _process(_delta : float) -> void:
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		_joy_input = Vector2.ZERO
 		return
