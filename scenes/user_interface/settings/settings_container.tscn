@@ -79,6 +79,8 @@ text = "Master Volume"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
 
 [node name="MusicHBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/AudioControl" unique_id=360184179]
 layout_mode = 2
@@ -91,6 +93,8 @@ text = "Music Volume"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
 
 [node name="SFXHBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/AudioControl" unique_id=1511025997]
 layout_mode = 2
@@ -103,6 +107,8 @@ text = "SFX Volume"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
 
 [node name="VideoControl" type="VBoxContainer" parent="ScrollContainer/VBoxContainer" unique_id=1666360475]
 visible = false
